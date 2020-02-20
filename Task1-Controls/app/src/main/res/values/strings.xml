@@ -1,9 +1,0 @@
-<resources>
-    <string name="app_name">Task1</string>
-    <string name="question_hint">Enter your question</string>
-    <string name="yes">Yes</string>
-    <string name="no">No</string>
-    <string name="ok">OK</string>
-    <string name="answers_label">Answer</string>
-    <string name="error_message">You should fill all the inputs!</string>
-</resources>
