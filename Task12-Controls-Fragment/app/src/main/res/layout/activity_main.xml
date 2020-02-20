@@ -6,22 +6,7 @@
   android:layout_height="match_parent"
   tools:context=".MainActivity" >
 
-    <EditText
-      android:id="@+id/editQuestion"
-      android:layout_width="382dp"
-      android:layout_height="41dp"
-      android:layout_marginStart="16dp"
-      android:layout_marginLeft="16dp"
-      android:layout_marginTop="16dp"
-      android:layout_marginEnd="16dp"
-      android:layout_marginRight="16dp"
-      android:ems="10"
-      android:hint="@string/question_hint"
-      android:inputType="textPersonName"
-      app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintHorizontal_bias="0.0"
-      app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toTopOf="parent" />
+
 
     <RadioGroup
       android:id="@+id/answerGroup"
@@ -72,7 +57,7 @@
       android:layout_marginTop="8dp"
       android:text="@string/answers_label"
       app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toBottomOf="@+id/displayError" />
+      app:layout_constraintTop_toBottomOf="@+id/fragment" />
 
     <TextView
       android:id="@+id/displayQuestion"
@@ -98,16 +83,18 @@
       app:layout_constraintStart_toStartOf="parent"
       app:layout_constraintTop_toBottomOf="@+id/displayQuestion" />
 
-    <TextView
-      android:id="@+id/displayError"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
+    <fragment
+      android:id="@+id/fragment"
+      android:name="com.example.task1.QuestionFragment"
+      android:layout_width="373dp"
+      android:layout_height="87dp"
       android:layout_marginStart="16dp"
       android:layout_marginLeft="16dp"
-      android:layout_marginTop="8dp"
-      android:text="@string/error_message"
-      android:visibility="gone"
+      android:layout_marginTop="16dp"
+      android:layout_marginEnd="16dp"
+      android:layout_marginRight="16dp"
+      app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toBottomOf="@+id/editQuestion" />
+      app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
