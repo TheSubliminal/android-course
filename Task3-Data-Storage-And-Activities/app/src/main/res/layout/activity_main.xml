@@ -17,26 +17,27 @@
       android:layout_marginEnd="16dp"
       android:layout_marginRight="16dp"
       app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintHorizontal_bias="0.0"
       app:layout_constraintStart_toStartOf="parent"
       app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-      android:id="@+id/button"
+      android:id="@+id/buttonSave"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
       android:layout_marginStart="16dp"
       android:layout_marginLeft="16dp"
       android:layout_marginTop="8dp"
-      android:onClick="onDisplayInputValues"
-      android:text="@string/ok"
+      android:onClick="onSaveInputValues"
+      android:text="@string/save"
       app:layout_constraintStart_toStartOf="parent"
       app:layout_constraintTop_toBottomOf="@+id/answerFragment" />
 
     <fragment
       android:id="@+id/answerFragment"
       android:name="com.example.task1.AnswerFragment"
-      android:layout_width="370dp"
-      android:layout_height="wrap_content"
+      android:layout_width="0dp"
+      android:layout_height="18dp"
       android:layout_marginStart="16dp"
       android:layout_marginLeft="16dp"
       android:layout_marginTop="8dp"
@@ -46,18 +47,28 @@
       app:layout_constraintStart_toStartOf="parent"
       app:layout_constraintTop_toBottomOf="@+id/questionFragment" />
 
-    <fragment
-      android:id="@+id/inputDisplayFragment"
-      android:name="com.example.task1.InputDisplayFragment"
-      android:layout_width="372dp"
+    <Button
+      android:id="@+id/buttonOpen"
+      android:layout_width="wrap_content"
       android:layout_height="wrap_content"
       android:layout_marginStart="16dp"
       android:layout_marginLeft="16dp"
       android:layout_marginTop="8dp"
-      android:layout_marginEnd="16dp"
-      android:layout_marginRight="16dp"
-      app:layout_constraintEnd_toEndOf="parent"
+      android:onClick="onOpenSavedValues"
+      android:text="@string/open"
+      app:layout_constraintStart_toEndOf="@+id/buttonSave"
+      app:layout_constraintTop_toBottomOf="@+id/answerFragment" />
+
+    <TextView
+      android:id="@+id/saveSuccessMessage"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginStart="16dp"
+      android:layout_marginLeft="16dp"
+      android:layout_marginTop="16dp"
+      android:text="@string/saved_success"
       app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toBottomOf="@+id/button" />
+      app:layout_constraintTop_toBottomOf="@+id/buttonSave"
+      tools:visibility="invisible" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
