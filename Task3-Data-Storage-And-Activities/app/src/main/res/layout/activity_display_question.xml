@@ -6,18 +6,19 @@
   android:layout_height="match_parent"
   tools:context=".InputDisplayActivity">
 
-  <TextView
-    android:id="@+id/savedValuesView"
-    android:layout_width="0dp"
-    android:layout_height="107dp"
+  <fragment
+    android:id="@+id/questionAnswerFragment"
+    android:name="com.example.task1.InputDisplayFragment"
+    android:layout_width="382dp"
+    android:layout_height="75dp"
     android:layout_marginStart="16dp"
     android:layout_marginLeft="16dp"
-    android:layout_marginTop="16dp"
+    android:layout_marginTop="8dp"
     android:layout_marginEnd="16dp"
     android:layout_marginRight="16dp"
-    android:textSize="30sp"
+    app:layout_constraintDimensionRatio="w,1:1"
     app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintHorizontal_bias="0.0"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toTopOf="parent" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>

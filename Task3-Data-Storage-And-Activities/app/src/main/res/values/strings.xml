@@ -6,9 +6,10 @@
   <string name="save">Save</string>
   <string name="answers_label">Answer</string>
   <string name="error_message">You should fill all the inputs!</string>
+  <string name="save_success">Successfully saved!</string>
+  <string name="save_error">An error occurred while saving</string>
 
   <!-- TODO: Remove or change this placeholder text -->
   <string name="hello_blank_fragment">Hello blank fragment</string>
   <string name="open">Open</string>
-  <string name="saved_success">Successfully saved!</string>
 </resources>

@@ -37,7 +37,7 @@
       android:id="@+id/answerFragment"
       android:name="com.example.task1.AnswerFragment"
       android:layout_width="0dp"
-      android:layout_height="18dp"
+      android:layout_height="wrap_content"
       android:layout_marginStart="16dp"
       android:layout_marginLeft="16dp"
       android:layout_marginTop="8dp"
@@ -60,15 +60,14 @@
       app:layout_constraintTop_toBottomOf="@+id/answerFragment" />
 
     <TextView
-      android:id="@+id/saveSuccessMessage"
+      android:id="@+id/saveInfoMessage"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
       android:layout_marginStart="16dp"
       android:layout_marginLeft="16dp"
       android:layout_marginTop="16dp"
-      android:text="@string/saved_success"
+      android:visibility="visible"
       app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toBottomOf="@+id/buttonSave"
-      tools:visibility="invisible" />
+      app:layout_constraintTop_toBottomOf="@+id/buttonSave" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
