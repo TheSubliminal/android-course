@@ -44,6 +44,9 @@ class InputDisplayActivity : AppCompatActivity() {
       if (cursor.moveToFirst()) {
         question = getString(0)
         answer = getString(1)
+        hideError()
+      } else {
+        showError()
       }
     }
 
@@ -65,14 +68,13 @@ class InputDisplayActivity : AppCompatActivity() {
   }
 
   private fun showError() {
-    findViewById<TextView>(R.id.errorMessage).apply {
+    findViewById<TextView>(R.id.noValuesMessage).apply {
       visibility = View.VISIBLE
     }
-
   }
 
   private fun hideError() {
-    findViewById<TextView>(R.id.errorMessage).apply {
+    findViewById<TextView>(R.id.noValuesMessage).apply {
       visibility = View.GONE
     }
   }

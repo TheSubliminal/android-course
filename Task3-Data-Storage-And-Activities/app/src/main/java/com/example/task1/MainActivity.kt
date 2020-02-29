@@ -19,7 +19,7 @@ class MainActivity : AppCompatActivity() {
 
     if (question == "") {
       questionFragment.showError()
-      setSaveInfoMessage("")
+      setSaveInfoMessage(null)
     } else {
       val answerFragment = supportFragmentManager.findFragmentById(R.id.answerFragment) as AnswerFragment
       val answer = answerFragment.getAnswer()
@@ -29,9 +29,15 @@ class MainActivity : AppCompatActivity() {
     }
   }
 
-  private fun setSaveInfoMessage(infoText: String) {
-    findViewById<TextView>(R.id.saveInfoMessage).apply {
-      text = infoText
+  private fun setSaveInfoMessage(infoTextResId: Int?) {
+    val saveInfoView = findViewById<TextView>(R.id.saveInfoMessage)
+
+    if (infoTextResId == null) {
+      saveInfoView.apply {
+        text = ""
+      }
+    } else {
+      saveInfoView.setText(infoTextResId)
     }
   }
 
@@ -46,16 +52,16 @@ class MainActivity : AppCompatActivity() {
 
     val newId = db?.insert(QuestionAnswerContract.QuestionAnswerEntry.TABLE_NAME, null, values)
     if (newId != -1L) {
-      setSaveInfoMessage(R.string.save_success.toString())
+      setSaveInfoMessage(R.string.save_success)
     } else {
-      setSaveInfoMessage(R.string.save_error.toString())
+      setSaveInfoMessage(R.string.save_error)
     }
 
     dbHelper.close()
   }
 
   fun onOpenSavedValues(view: View) {
-    setSaveInfoMessage("")
+    setSaveInfoMessage(null)
 
     val intent = Intent(this, InputDisplayActivity::class.java)
     startActivity(intent)
