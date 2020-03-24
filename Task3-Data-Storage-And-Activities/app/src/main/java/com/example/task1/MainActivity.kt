@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.TextView
+import androidx.fragment.app.FragmentTransaction
 
 class MainActivity : AppCompatActivity() {
   override fun onCreate(savedInstanceState: Bundle?) {
@@ -58,12 +59,32 @@ class MainActivity : AppCompatActivity() {
     }
 
     dbHelper.close()
+    displayValues(question)
   }
 
   fun onOpenSavedValues(view: View) {
+    val displayFragment = supportFragmentManager.findFragmentById(R.id.inputDisplayFragment) as InputDisplayFragment
+    displayFragment.clearText()
     setSaveInfoMessage(null)
+
 
     val intent = Intent(this, InputDisplayActivity::class.java)
     startActivity(intent)
+  }
+
+  private fun displayValues(question: String) {
+    val answerFragment = supportFragmentManager.findFragmentById(R.id.answerFragment) as AnswerFragment
+    val answer = answerFragment.getAnswer()
+
+    var displayFragment = supportFragmentManager.findFragmentById(R.id.inputDisplayFragment) as InputDisplayFragment
+    if (InputDisplayFragment.composeText(question, answer) != displayFragment.displayText) {
+      displayFragment = InputDisplayFragment.newInstance(question, answer)
+
+      supportFragmentManager.beginTransaction().apply {
+        replace(R.id.inputDisplayFragment, displayFragment)
+        setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
+        commit()
+      }
+    }
   }
 }

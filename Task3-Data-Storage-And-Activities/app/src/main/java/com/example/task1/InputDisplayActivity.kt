@@ -8,8 +8,7 @@ import android.widget.TextView
 import androidx.fragment.app.FragmentTransaction
 
 class InputDisplayActivity : AppCompatActivity() {
-  private var question = ""
-  private var answer = ""
+  private var composedText = ""
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
@@ -33,7 +32,7 @@ class InputDisplayActivity : AppCompatActivity() {
     val cursor = db.query(
       QuestionAnswerContract.QuestionAnswerEntry.TABLE_NAME,   // The table to query
       projection,             // The array of columns to return (pass null to get all)
-      null,              // The columns for the WHERE clause
+      null,                   // The columns for the WHERE clause
       null,                   // The values for the WHERE clause
       null,                   // don't group the rows
       null,                   // don't filter by row groups
@@ -41,9 +40,17 @@ class InputDisplayActivity : AppCompatActivity() {
     )
 
     with(cursor) {
-      if (cursor.moveToFirst()) {
-        question = getString(0)
-        answer = getString(1)
+      if (cursor.moveToLast()) {
+        var question = getString(0)
+        var answer = getString(1)
+        composedText = "$question\n$answer\n\n"
+
+        while (cursor.moveToPrevious()) {
+          question = getString(0)
+          answer = getString(1)
+
+          composedText += "$question\n$answer\n\n"
+        }
         hideError()
       } else {
         showError()
@@ -56,8 +63,8 @@ class InputDisplayActivity : AppCompatActivity() {
 
   private fun initializeView() {
     var displayFragment = supportFragmentManager.findFragmentById(R.id.questionAnswerFragment) as InputDisplayFragment
-    if (InputDisplayFragment.composeText(question, answer) != displayFragment.displayText) {
-      displayFragment = InputDisplayFragment.newInstance(question, answer)
+    if (InputDisplayFragment.composeText(composedText, "") != displayFragment.displayText) {
+      displayFragment = InputDisplayFragment.newInstance(composedText, "")
 
       supportFragmentManager.beginTransaction().apply {
         replace(R.id.questionAnswerFragment, displayFragment)

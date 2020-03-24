@@ -30,6 +30,11 @@ class InputDisplayFragment : Fragment() {
     return view
   }
 
+  fun clearText() {
+    val displayInputsView = view?.findViewById<TextView>(R.id.displayInputs)
+    displayInputsView?.text = ""
+  }
+
   companion object {
     fun newInstance(question: String, answer: String): InputDisplayFragment {
       val fragment = InputDisplayFragment()
